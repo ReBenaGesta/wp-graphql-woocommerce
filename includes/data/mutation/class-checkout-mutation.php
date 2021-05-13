@@ -524,7 +524,11 @@ class Checkout_Mutation {
 		);
 
 		// Process Payment.
-		return $available_gateways[ $payment_method ]->process_payment( ...$process_payment_args );
+		try {
+			return $available_gateways[ $payment_method ]->process_payment( ...$process_payment_args );
+		} catch (Exception $e) {
+			throw new UserError($e->getMessage());
+		}
 	}
 
 	/**
