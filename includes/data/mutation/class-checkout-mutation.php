@@ -507,7 +507,7 @@ class Checkout_Mutation {
 	 *
 	 * @return array.
 	 */
-	protected function process_order_payment( $order_id, $payment_method ) {
+	protected static function process_order_payment( $order_id, $payment_method ) {
 		$available_gateways = WC()->payment_gateways->get_available_payment_gateways();
 
 		if ( ! isset( $available_gateways[ $payment_method ] ) ) {
